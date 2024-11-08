@@ -1,0 +1,15 @@
+Schreibe einen regulären Ausdruck in Unix-Notation, der die am Ende gegebenen Strings exakt beschreibt.
+Beachte die folgenden Hinweise für die Erstellung des regulären Ausdruck! Der reguläre Ausdruck soll:
+
+Unix-Notation: Verwende die Syntax für reguläre Ausdrücke, die auf Unix-Systemen üblich ist.
+Präzision: Der reguläre Ausdruck soll möglichst präzise und spezifisch auf alle gegebenen Strings angepasst sein, um Fehlinterpretationen zu vermeiden. 
+Er soll für alle Input-Strings gelten und für alle auch valide sein bzw. gelten.
+Vollständigkeit: Der Ausdruck muss aufjedenfall alle Strings in der Liste abdecken!
+
+Hier ist ein Beispiel:
+
+Input-String: david@web.de; nischal@gmail.com
+Regulärer Ausdruck: ^[a-zA-Z]+@[a-zA-Z]+\.(de|com)$
+
+Input-Strings: Die Input-Strings sind durch ; getrennt und dienen als Grundlage zur Bestimmung des regulären Ausdrucks.
+Dein Ergebnis sollte nur den regulären Ausdruck enthalten, ohne zusätzlichen Text.
