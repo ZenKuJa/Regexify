@@ -1,11 +1,11 @@
-from MyRegEx import MyRegEx
-from RegExGenerator import RegExGenerator
+from RegEx import regular_expression
+from RegExGenerator import regular_expression_generator
 
-regEx: MyRegEx = MyRegEx()
-regExGen: RegExGenerator = RegExGenerator()
+reg_ex_gen: regular_expression_generator = regular_expression_generator()
 
-input_str: str = "abcdFGH12345678"
+input_str: str = "Hello World!"
 
-regEx.set_reg_ex_list(regExGen.get_reg_ex_list_for(input_str))
+reg_ex: regular_expression = reg_ex_gen.generate(input_str)
 
-print(regEx.get_reg_ex_string())
+print(reg_ex.to_str())
+
