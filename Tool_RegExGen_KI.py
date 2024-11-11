@@ -1,6 +1,6 @@
 import google.generativeai as genai
 
-GOOGLE_API_KEY =  open('TI_Tool/Gemini_Api_Key.txt','r').read()
+GOOGLE_API_KEY =  open('Gemini_Api_Key.txt','r').read()
 genai.configure(api_key=GOOGLE_API_KEY)
 
 generation_config = {
@@ -17,7 +17,7 @@ model = genai.GenerativeModel(
   system_instruction="Du bist ein Experte für RegEx beziehungsweise Reguläre Ausdrucke! Deine Antwort sollte kurz und möglichst präzise sein, wobei der Input möglichst detatilliert durch einen Regulären Ausdruck beschrieben wird!",
 )
 
-instruction = open('TI_Tool/Tool_KI_instruction.txt','r').read()
+instruction = open('Tool_KI_instruction.txt','r').read()
 
 def einDurchlauf():
   userinput = input("Gib bitte deinen Input mit ; sepereriert an! : ")
