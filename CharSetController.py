@@ -1,14 +1,20 @@
-
+import xml.etree.ElementTree as etree
 from CharSet import CharSet
 
 class CharSetController:
-    lower_letter: CharSet = CharSet(name="lower_letter", chars="abcdefghijklmnopqrstuvwxyz", short_name="[a-z]")
-    upper_letter: CharSet = CharSet(name="upper_letter", chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ", short_name="[A-Z]")
-    numbers: CharSet = CharSet(name="numbers", chars="0123456789", short_name="[0-9]")
-    punctuation: CharSet = CharSet(name="punctuation", chars="., !?\";:", short_name="[., !?\";:]")
-    special_chars: CharSet = CharSet(name="@/\\*#-_€", chars="@/\\*#-_€", short_name="[@/\\*#-_€]")
+    my_alphabet: list[CharSet] = []
 
-    my_alphabet: list[CharSet] = [lower_letter, upper_letter, numbers, punctuation, special_chars]
+    def __init__(self):
+        tree = etree.parse(source="CharSetData.xml")
+        xml_char_set = tree.findall(".//char_set")
+
+        for xml_element in xml_char_set:
+            name: str = xml_element.find("name").text
+            short_name: str = xml_element.find("short_name").text
+            included_chars: str = xml_element.find("included_chars").text
+
+            new_char_set: CharSet = CharSet(name=name, short_name=short_name, chars=included_chars)
+            self.my_alphabet.append(new_char_set)
 
     def get_char_set(self, char: str) -> CharSet | None:
         found: bool = False
