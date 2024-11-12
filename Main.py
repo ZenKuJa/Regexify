@@ -1,10 +1,14 @@
-from RegEx import regular_expression
-from RegExGenerator import regular_expression_generator
+from RegEx import RegularExpression
+from RegExGenerator import RegExGenerator
 
-reg_ex_gen: regular_expression_generator = regular_expression_generator()
+def main():
+    reg_ex_gen: RegExGenerator = RegExGenerator()
 
-input_str: str = "chrissi@arbeitsamt.de"
+    input_str: str = "chrissi@arbeitsamt.de"
 
-reg_ex: regular_expression = reg_ex_gen.generate(input_str)
+    reg_ex: RegularExpression = reg_ex_gen.generate(input_str)
 
-print(reg_ex.to_str())
+    print(reg_ex.to_str())
+
+if __name__ == '__main__':
+    main()

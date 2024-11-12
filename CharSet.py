@@ -1,4 +1,4 @@
-class char_set:
+class CharSet:
 
     name: str
     chars: str

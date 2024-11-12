@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="CharSetDataSchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+
+<alphabet>
+    <char_set>
+        <name>lower_letter</name>
+        <short_name>[a-z]</short_name>
+        <included_chars>abcdefghijklmnopqrstuvwxyz</included_chars>
+    </char_set>
+    <char_set>
+        <name>upper_letter</name>
+        <short_name>[A-Z]</short_name>
+        <included_chars>ABCDEFGHIJKLMNOPQRSTUVWXYZ</included_chars>
+    </char_set>
+    <char_set>
+        <name>numbers</name>
+        <short_name>[0-9]</short_name>
+        <included_chars>0123456789</included_chars>
+    </char_set>
+    <char_set>
+        <name>punctuation</name>
+        <short_name>[., !?\";:]</short_name>
+        <included_chars>., !?\";:</included_chars>
+    </char_set>
+    <char_set>
+        <name>special_character</name>
+        <short_name>[@/\*#-_€"]</short_name>
+        <included_chars>@/\*#-_€"</included_chars>
+    </char_set>
+</alphabet>

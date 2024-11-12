@@ -1,28 +1,20 @@
 
-from CharSet import char_set
+from CharSet import CharSet
 
-class char_set_controller:
-    lower_letter: char_set = char_set(name="lower_letter", chars= "abcdefghijklmnopqrstuvwxyz", short_name="[a-z]")
-    upper_letter: char_set = char_set(name= "upper_letter", chars= "ABCDEFGHIJKLMNOPQRSTUVWXYZ", short_name= "[A-Z]")
-    numbers: char_set = char_set(name= "numbers", chars= "0123456789", short_name="[0-9]")
-    punctuation: char_set = char_set(name= "punctuation", chars= "., !?\";:", short_name="[., !?\";:]")
-    special_chars: char_set = char_set(name="@/\\*#-_€", chars= "@/\\*#-_€", short_name= "[@/\\*#-_€]")
+class CharSetController:
+    lower_letter: CharSet = CharSet(name="lower_letter", chars="abcdefghijklmnopqrstuvwxyz", short_name="[a-z]")
+    upper_letter: CharSet = CharSet(name="upper_letter", chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ", short_name="[A-Z]")
+    numbers: CharSet = CharSet(name="numbers", chars="0123456789", short_name="[0-9]")
+    punctuation: CharSet = CharSet(name="punctuation", chars="., !?\";:", short_name="[., !?\";:]")
+    special_chars: CharSet = CharSet(name="@/\\*#-_€", chars="@/\\*#-_€", short_name="[@/\\*#-_€]")
 
-    my_alphabet: list[char_set] = []
+    my_alphabet: list[CharSet] = [lower_letter, upper_letter, numbers, punctuation, special_chars]
 
-    my_alphabet.append(lower_letter)
-    my_alphabet.append(upper_letter)
-    my_alphabet.append(numbers)
-    my_alphabet.append(punctuation)
-    my_alphabet.append(special_chars)
-
-    
-
-    def get_char_set(self, char: str) -> char_set:
+    def get_char_set(self, char: str) -> CharSet | None:
         found: bool = False
-        for set in self.my_alphabet:
-            if char in set.get_char_set():
+        for char_set in self.my_alphabet:
+            if char in char_set.get_char_set():
                 found = True
-                return set
+                return char_set
         if not found:
             return None
