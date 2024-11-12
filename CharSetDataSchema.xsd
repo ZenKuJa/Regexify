@@ -3,7 +3,7 @@
 
 <xs:element name="name" type="xs:string"/>
 <xs:element name="short_name" type="xs:string"/>
-<xs:element name="included_chars" type="xs:string"/>
+ <xs:element name="included_chars" type="xs:string"/>
 
 <xs:element name="char_set">
     <xs:complexType>
@@ -22,6 +22,5 @@
         </xs:sequence>
     </xs:complexType>
 </xs:element>
-
 
 </xs:schema>

@@ -1,11 +1,12 @@
-import xml.etree.ElementTree as etree
+import xml.etree.ElementTree as eTree
 from CharSet import CharSet
 
 class CharSetController:
+
     my_alphabet: list[CharSet] = []
 
     def __init__(self):
-        tree = etree.parse(source="CharSetData.xml")
+        tree = eTree.parse(source="CharSetData.xml")
         xml_char_set = tree.findall(".//char_set")
 
         for xml_element in xml_char_set:
