@@ -18,10 +18,7 @@ class CharSetController:
             self.my_alphabet.append(new_char_set)
 
     def get_char_set(self, char: str) -> CharSet | None:
-        found: bool = False
         for char_set in self.my_alphabet:
             if char in char_set.get_char_set():
-                found = True
-                return char_set
-        if not found:
-            return None
+                return char_set    
+        return None
