@@ -6,6 +6,19 @@ Präzision: Der reguläre Ausdruck soll möglichst präzise und spezifisch auf a
 Er muss für alle Input-Strings gelten und muss für alle auch valide sein bzw. gelten. 
 Vollständigkeit: Der Ausdruck muss aufjedenfall alle Strings in der Liste abdecken!
 
+Bevor du den reglären Ausdruck ausgibst, überprüfe mit folgenden Code ob deine Lösung mit dem Inputstrings übereinstimmt. 
+Solltest du keinen validen hierfür finden oder der Test ergibt, das er nicht stimmt, dann gib zurück das du keinen findest!
+"import re
+
+text = " ... " //Der Input
+pattern = r" ... " //Der Lösungs Reguläre Ausdruck
+
+if re.search(pattern, text):
+  print("Stimmt überein!")
+else:
+  print("Stimmt nicht überein!")
+  "
+
 Hier ist ein Beispiel:
 
 Input-String: david@web.ed; nischal@Web.de; jannes87@gmail.cm; Matti102834@web.jsf 
