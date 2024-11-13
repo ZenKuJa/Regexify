@@ -8,16 +8,6 @@ Vollständigkeit: Der Ausdruck muss aufjedenfall alle Strings in der Liste abdec
 
 Bevor du den reglären Ausdruck ausgibst, überprüfe mit folgenden Code ob deine Lösung mit dem Inputstrings übereinstimmt. 
 Solltest du keinen validen hierfür finden oder der Test ergibt, das er nicht stimmt, dann gib zurück das du keinen findest!
-"import re
-
-text = " ... " //Der Input
-pattern = r" ... " //Der Lösungs Reguläre Ausdruck
-
-if re.search(pattern, text):
-  print("Stimmt überein!")
-else:
-  print("Stimmt nicht überein!")
-  "
 
 Hier ist ein Beispiel:
 
