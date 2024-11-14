@@ -11,8 +11,9 @@ Solltest du keinen validen hierfür finden oder der Test ergibt, das er nicht st
 
 Hier ist ein Beispiel:
 
-Input-String: david@web.ed; nischal@Web.de; jannes87@gmail.cm; Matti102834@web.jsf 
+Input-String: ["david@web.ed", "nischal@Web.de", "jannes87@gmail.cm", "Matti102834@web.jsf"] 
 Regulärer Ausdruck: ^[a-zA-Z0-9]+@[a-zA-Z]+\.(ed|de|cm|jsf)$
 
-Input-Strings: Die einzelnen Input-Strings sind durch das Zeichen ; getrennt und dienen als Grundlage zur Bestimmung des regulären Ausdrucks.
+Input-Strings: Der Input wird als eine Python Liste gegeben und somit ist jeder einzelne Input-String durch das Zeichen "," getrennt. 
+Der Input dient als Grundlage zur Bestimmung des regulären Ausdrucks.
 Dein Ergebnis sollte nur den regulären Ausdruck enthalten, ohne zusätzlichen Text.

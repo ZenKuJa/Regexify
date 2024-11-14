@@ -6,10 +6,10 @@ genai.configure(api_key=GOOGLE_API_KEY)
 
 # Parameter zum Fine Tuning des Modells 
 generation_config = {
-  "temperature": 0.5,
-  "top_p": 0.8,
-  "top_k": 20,
-  "max_output_tokens": 8192,
+  "temperature": 0.3,
+  "top_p": 0.9,
+  "top_k": 10,
+  "max_output_tokens": 256,
   "response_mime_type": "text/plain",
 }
 
@@ -20,19 +20,18 @@ model = genai.GenerativeModel(
   system_instruction="""Du bist ein Experte für RegEx beziehungsweise Reguläre Ausdrucke! Deine Antwort sollte kurz und möglichst präzise sein, 
                         wobei der Input möglichst detatilliert durch einen Regulären Ausdruck beschrieben wird!""")
 
-# Funktion, welche den Userinput abfängt und zusammen mit den Promptanweisungen an das LLM gesendet, im Anschluss wird die Antwort validiert
-# und je nachdem zurückgegeben. Zum Schluss wird abgefragt, ob der User noch eine Abfrage machen möchte
-def einDurchlauf():
-  userinput = input("Gib bitte deinen Input (nur einzelne Zeichenketten) mit ; sepereriert an! : ")
+
+# Funktion, welche den Userinput abfängt und zusammen mit den Promptanweisungen an das LLM sendet, im Anschluss wird die Antwort validiert und je nachdem zurückgegeben
+def eineAbfrage(inputList):
   promptInstruction = open('Tool_KI_instruction.txt','r').read()
 
-  if userinput == "":
+  if inputList == "":
       print("Kein Input eingegeben!")
   else:
-    response = model.generate_content(promptInstruction + "Hier sind die Input Strings: " + userinput)
+    response = model.generate_content(promptInstruction + "Hier sind die Input Strings: " + " ; ".join(inputList))
+    
     falseCounter = 0
- 
-    for oneInputstring in userinput.split(';'):
+    for oneInputstring in inputList:
       if not re.search((f'{response.text}').strip(), oneInputstring.strip()):
           falseCounter += 1
 
@@ -41,8 +40,7 @@ def einDurchlauf():
   else: 
     print("Für den eingegebenen Input wurde kein valider Regulärer Ausdruck gefunden!")
 
-  if (input("Eine weitere Abfrage (Y/n)? :") == "Y"):
-        einDurchlauf()
+    
 
-# Tool starten
-einDurchlauf()
+  
+eineAbfrage(["chrissi@arbeitsamt.de", "scholz12@bundestag.de", "donald12@whitehouse.us", "charlie@hell.gov"])
