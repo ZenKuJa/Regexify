@@ -16,3 +16,8 @@ class CharSet:
 
     def get_char_set(self) -> str:
         return self.chars
+
+    def get_name(self) -> str:
+        return self.name
+
+
