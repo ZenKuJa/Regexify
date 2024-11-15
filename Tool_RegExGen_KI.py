@@ -15,7 +15,7 @@ generation_config = {
 
 # Modellauswahl und Anweisungen
 model = genai.GenerativeModel(
-  model_name="gemini-1.5-flash",
+  model_name="gemini-1.5-pro",
   generation_config=generation_config,
   system_instruction="""Du bist ein Experte für RegEx beziehungsweise Reguläre Ausdrucke! Deine Antwort sollte kurz und möglichst präzise sein, 
                         wobei der Input möglichst detatilliert durch einen Regulären Ausdruck beschrieben wird!""")
@@ -43,4 +43,4 @@ def eineAbfrage(inputList):
     
 
   
-eineAbfrage(["chrissi@arbeitsamt.de", "scholz12@bundestag.de", "donald12@whitehouse.us", "charlie@hell.gov"])
+eineAbfrage(["chrissi@arbeitsamt.de", "scholz12@bundestag.de", "donald12@whitehouse.us", "charlie@hell.gov", "nischal@web.de", "david69@gmail.ckkkom"])
