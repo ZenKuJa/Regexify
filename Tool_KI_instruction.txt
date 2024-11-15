@@ -6,10 +6,9 @@ Präzision: Der reguläre Ausdruck soll möglichst präzise und spezifisch auf a
 Er muss für alle Input-Strings gelten und muss für alle auch valide sein bzw. gelten. 
 Solltest du keinen validen hierfür finden oder der Test ergibt, das er nicht stimmt, dann gib zurück das du keinen findest!
 Dein Ergebnis sollte nur den regulären Ausdruck enthalten, ohne zusätzlichen Text.
+Input-Strings: Der Input wird als eine Python Liste gegeben und somit ist jeder einzelne Input-String durch das Zeichen "," getrennt. 
 
 Hier ist ein Beispiel:
 
 Input-String: ["david@web.ed", "nischal@Web.de", "jannes87@gmail.cm", "Matti102834@web.jsf"] 
 Regulärer Ausdruck: ^[a-zA-Z0-9]+@[a-zA-Z]+\.(ed|de|cm|jsf)$
-
-Input-Strings: Der Input wird als eine Python Liste gegeben und somit ist jeder einzelne Input-String durch das Zeichen "," getrennt. 
