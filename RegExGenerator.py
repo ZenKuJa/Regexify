@@ -44,20 +44,19 @@ class RegExGenerator:
             output_list.append(self.generate(_str))
         return output_list
 
-
-
     def merge_2_reg_ex(self, reg_ex_1: RegularExpression, reg_ex_2: RegularExpression) -> RegularExpression | None:
         new_reg_ex: RegularExpression = RegularExpression()
 
         if reg_ex_1.get_reg_ex_order() ==  reg_ex_2.get_reg_ex_order():
             new_reg_ex: RegularExpression = RegularExpression()
             for re_part_1, re_part_2 in zip(reg_ex_1.get_reg_ex_parts(), reg_ex_2.get_reg_ex_parts()):
-                char_set: CharSet = re_part_1["char_set"]
-                occurring_chars:str = "".join(sorted(set(re_part_1["occurring_chars"] + re_part_2["occurring_chars"])))
-                min_amount: int = min(re_part_1["min"], re_part_2["min"])
-                max_amount: int = max(re_part_1["max"], re_part_2["max"])
+                char_set: CharSet = re_part_1.get_char_set()
+                occurring_chars:str = "".join(sorted(set(re_part_1.get_occurring_chars() + re_part_2.get_occurring_chars())))
+                occurring_strings: list(str) = re_part_1.get_occurring_strings() + re_part_2.get_occurring_strings()
+                min_amount: int = min(re_part_1.get_min_length(), re_part_2.get_min_length())
+                max_amount: int = max(re_part_1.get_max_length(), re_part_2.get_max_length())
 
-                new_reg_ex.append(char_set, occurring_chars, min_amount, max_amount)
+                new_reg_ex.append(occurring_strings, char_set, min_amount, max_amount)
 
             return new_reg_ex
         else:
