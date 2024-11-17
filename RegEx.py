@@ -41,7 +41,6 @@ class RegularExpression:
                     if i < len(str_occurring_strings) - 1:
                         str_short += f"{occurring_string}|"
                     else:
-                        print("world")
                         str_short += f"{occurring_string}"
 
                 return_str += f"[{str_short}]"
