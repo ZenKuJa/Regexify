@@ -1,12 +1,12 @@
-Schreibe einen regulären Ausdruck in Unix-Notation, der die am Ende gegebenen Strings exakt beschreibt.
+Schreibe einen möglichst minimalen regulären Ausdruck in Unix-Notation, der die am Ende gegebenen Strings exakt beschreibt.
 Beachte die folgenden Hinweise für die Erstellung des regulären Ausdruck! Der reguläre Ausdruck soll:
 
-Unix-Notation: Verwende die Syntax für reguläre Ausdrücke, die auf Unix-Systemen üblich ist.
-Präzision: Der reguläre Ausdruck soll möglichst präzise und spezifisch auf alle gegebenen Strings angepasst sein, um Fehlinterpretationen zu vermeiden. 
-Er muss für alle Input-Strings gelten und muss für alle auch valide sein bzw. gelten. 
-Solltest du keinen validen hierfür finden oder der Test ergibt, das er nicht stimmt, dann gib zurück das du keinen findest!
-Dein Ergebnis sollte nur den regulären Ausdruck enthalten, ohne zusätzlichen Text.
-Input-Strings: Der Input wird als eine Python Liste gegeben und somit ist jeder einzelne Input-String durch das Zeichen "," getrennt. 
+- Unix-Notation: Verwende die Syntax für reguläre Ausdrücke, die auf Unix-Systemen üblich ist.
+- Präzision: Der reguläre Ausdruck soll möglichst präzise und spezifisch auf alle gegebenen Strings angepasst sein, um Fehlinterpretationen zu vermeiden. 
+- Er muss für alle Input-Strings gelten und muss für alle auch valide sein bzw. gelten. 
+- Solltest du keinen validen hierfür finden oder der Test ergibt, das er nicht stimmt, dann gib zurück das du keinen findest!
+- Dein Ergebnis sollte nur den regulären Ausdruck enthalten, ohne zusätzlichen Text.
+- Input-Strings: Der Input wird als eine Python Liste gegeben und somit ist jeder einzelne Input-String durch das Zeichen "," getrennt. 
 
 Hier ist ein Beispiel:
 

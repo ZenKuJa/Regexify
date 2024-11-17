@@ -22,7 +22,7 @@ model = genai.GenerativeModel(
 
 
 # Funktion, welche den Userinput abfängt und zusammen mit den Promptanweisungen an das LLM sendet, im Anschluss wird die Antwort validiert und je nachdem zurückgegeben
-def eineAbfrage(inputList):
+def generateRegEx(inputList):
   promptInstruction = open('Tool_KI_instruction.txt','r').read()
 
   if inputList == "":
@@ -41,6 +41,4 @@ def eineAbfrage(inputList):
     print("Für den eingegebenen Input wurde kein valider Regulärer Ausdruck gefunden!")
 
     
-
-  
-eineAbfrage(["chrissi@arbeitsamt.de", "scholz12@bundestag.de", "donald12@whitehouse.us", "charlie@hell.gov", "nischal@web.de", "david69@gmail.ckkkom"])
+generateRegEx(["192.186.80.156", "192.456.80.880"])
