@@ -23,9 +23,9 @@ class RegExGenerator:
             if i+1 >= len(input_str):
                 prev_charset: CharSet = self.char_controller.get_char_set(input_str[i - 1])
                 if current_charset == prev_charset:
-                    reg_ex.append(current_charset, occurring_chars, min_amount=group_length, max_amount=group_length)
+                    reg_ex.append(current_charset, [occurring_chars], min_amount=group_length, max_amount=group_length)
                 else:
-                    reg_ex.append(current_charset, occurring_chars, 1, max_amount=1)
+                    reg_ex.append(current_charset, [occurring_chars], 1, max_amount=1)
             # next char exists
             else:
                 next_charset: CharSet = self.char_controller.get_char_set(input_str[i + 1])
@@ -33,7 +33,7 @@ class RegExGenerator:
                 if current_charset == next_charset:
                         group_length += 1
                 else:
-                    reg_ex.append(current_charset, occurring_chars, min_amount=group_length, max_amount=group_length)
+                    reg_ex.append(current_charset, [occurring_chars], min_amount=group_length, max_amount=group_length)
                     occurring_chars = ""
                     group_length = 1
         return reg_ex
@@ -52,12 +52,12 @@ class RegExGenerator:
         if reg_ex_1.get_reg_ex_order() ==  reg_ex_2.get_reg_ex_order():
             new_reg_ex: RegularExpression = RegularExpression()
             for re_part_1, re_part_2 in zip(reg_ex_1.get_reg_ex_parts(), reg_ex_2.get_reg_ex_parts()):
-                char_set: CharSet = re_part_1["char_set"]
-                occurring_chars:str = "".join(sorted(set(re_part_1["occurring_chars"] + re_part_2["occurring_chars"])))
-                min_amount: int = min(re_part_1["min"], re_part_2["min"])
-                max_amount: int = max(re_part_1["max"], re_part_2["max"])
+                char_set: CharSet = re_part_1.get_char_set()
+                occurring_strings: list[str] = re_part_1.get_occurring_strings() + (re_part_2.get_occurring_strings())
+                min_amount: int = min(re_part_1.get_min_length(), re_part_2.get_min_length())
+                max_amount: int = max(re_part_1.get_max_length(), re_part_2.get_max_length())
 
-                new_reg_ex.append(char_set, occurring_chars, min_amount, max_amount)
+                new_reg_ex.append(char_set, occurring_strings, min_amount, max_amount)
 
             return new_reg_ex
         else:

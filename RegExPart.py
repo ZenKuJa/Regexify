@@ -26,8 +26,12 @@ class RegExPart:
     def set_max_length(self, max_length: int) -> None:
         self.max_length = max_length
 
-    def get_occurring_chars(self) -> list[str]:
+    def get_occurring_strings(self) -> list[str]:
         return self.occurring_strings
+
+    def get_occurring_chars(self) -> str:
+        occurring_chars = "".join(sorted(set(self.occurring_strings)))
+        return occurring_chars
 
     def get_char_set(self) -> CharSet:
         return self.char_set
