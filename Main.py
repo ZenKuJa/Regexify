@@ -6,7 +6,7 @@ def main():
 
     str_list: list[str] = [
         "chrissi@arbeitsamt.de", "scholz@bundestag.de", "donald@whitehouse.us"
-        , "charlie@hell.gov", "lucifermorningstar@hell.rulz"]
+        , "charlie@bundestag.us", "lucifermorningstar@whitehouse.us"]
 
     reg_ex_list: list[RegularExpression] = reg_ex_gen.generate_list(str_list)
 
