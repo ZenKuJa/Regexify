@@ -26,7 +26,7 @@ class RegExPart:
     def set_max_length(self, max_length: int) -> None:
         self.max_length = max_length
 
-    def get_occurring_strings(self) -> list[str]:
+    def get_occurring_chars(self) -> list[str]:
         return self.occurring_strings
 
     def get_char_set(self) -> CharSet:
@@ -37,11 +37,3 @@ class RegExPart:
 
     def get_max_length(self) -> int:
         return self.max_length
-
-    def get_occurring_chars(self) -> str:
-        str_occurring_chars: str = ""
-        for _str in self.occurring_strings:
-            str_occurring_chars += _str
-
-        return "".join(sorted(set(str_occurring_chars)))
-

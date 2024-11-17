@@ -4,7 +4,9 @@ from RegExGenerator import RegExGenerator
 def main():
     reg_ex_gen: RegExGenerator = RegExGenerator()
 
-    str_list: list[str] = ["192.186.80.156", "192.456.80.880"]
+    str_list: list[str] = [
+        "chrissi@arbeitsamt.de", "scholz@bundestag.de", "donald@whitehouse.us"
+        , "charlie@hell.gov", "lucifermorningstar@hell.rulz"]
 
     reg_ex_list: list[RegularExpression] = reg_ex_gen.generate_list(str_list)
 
