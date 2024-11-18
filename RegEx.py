@@ -6,6 +6,7 @@ from RegExPart import RegExPart
 
 class RegularExpression:
     reg_ex_structure: list[RegExPart]
+    reg_ex_operators: list[str]
 
     max_occurring_strings: int = 3
     max_occurring_chars: int = 7
@@ -13,6 +14,9 @@ class RegularExpression:
     def __init__(self):
         self.reg_ex = ""
         self.reg_ex_structure = []
+        self.reg_ex_operators = [
+            ".", "*", "+", "?", "$", "|", "^", "\\", "-", "(", ")", "{", "}", "[", "]"
+        ]
 
     def append(self, char_set: CharSet, occurring_strings: list[str], min_amount: int, max_amount: int) -> None:
         new_reg_ex_part: RegExPart = RegExPart(list(set(occurring_strings)), char_set, min_amount, max_amount)
@@ -34,8 +38,16 @@ class RegularExpression:
             str_min = reg_ex_part.get_min_length()
             str_max = reg_ex_part.get_max_length()
 
+            if len(str_occurring_strings) == 1:
+                str_short = str_occurring_strings[0]
 
-            if len(str_occurring_strings) <= self.max_occurring_strings:
+                if str_short in self.reg_ex_operators:
+                    return_str += f"+\\{str_short}"
+                else:
+                    return_str += f"+{str_short}"
+                continue
+
+            elif len(str_occurring_strings) <= self.max_occurring_strings:
                 str_short = ""
                 for i, occurring_string in enumerate(str_occurring_strings):
                     if i < len(str_occurring_strings) - 1:
@@ -43,7 +55,7 @@ class RegularExpression:
                     else:
                         str_short += f"{occurring_string}"
 
-                return_str += f"[{str_short}]"
+                return_str += f"({str_short})"
                 continue
             elif len(str_occurring_chars) <= self.max_occurring_chars:
                 str_short = ""
@@ -64,7 +76,7 @@ class RegularExpression:
 
             #return_str  = f"{return_str}[{str_short}]{{{str_min},{str_max}}}"
 
-        return return_str
+        return f"^{return_str}$"
 
     def get_reg_ex_parts(self) -> list[RegExPart]:
         return self.reg_ex_structure
