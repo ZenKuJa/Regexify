@@ -88,12 +88,14 @@ Button(frames["mainPage"], text='RegEx Check', width=30, height=2, bg='#0056A7',
 )
 
 # Subpages (David, Jannes, Matti)
+# Subpages (David, Jannes, Matti)
 for name in ["davidPage", "jannesPage", "mattiPage"]:
     page = frames[name]
     canvas = create_canvas(page, "black", "#2D3436")
     
-    for i in range(5):
-        Entry(page).place(x=26, y=40 + i * 90, height=75, width=850)
+    # Ersetzen der Entry-Felder durch ein Text-Widget
+    text_widget = Text(page, wrap="word", font=("Helvetica", 16), bg="white", fg="black")
+    text_widget.place(x=26, y=40, height=450, width=850)
 
     Button(page, text='RegEx Check', bg='#0184FF', fg='white').place(x=26, y=515, width=850, height=70)
     output_label = Label(page, text=regex_output, anchor='center', background="#2D3436", font=20, fg='white')
@@ -101,6 +103,7 @@ for name in ["davidPage", "jannesPage", "mattiPage"]:
     Button(page, text='c', command=lambda p=page, o=output_label: copy_to_clipboard(p, o)).place(x=800, y=635, width=50, height=50)
     create_nav_buttons(page, frames["mainPage"])
     create_subpage_elements(page, name.split("Page")[0])
+
 
 # Check page
 check_canvas = create_canvas(frames["checkPage"], "black", "#0184FF")
