@@ -7,7 +7,7 @@ Consider the following tips for creating the regular expression: The regular exp
 - It must be valid for all input strings and must be valid for all. 
 - If you do not find a valid one for this or the test shows that it is not correct, then give back that you do not find one!
 - Your result should contain only the regular expression, with no additional text.
-- Input strings: The input is given as a Python list and thus each input string is separated by the character "," 
+- Input strings: The input is given as a list and each input string is separated by the character ";" 
 
 Here is an example:
 

@@ -1,7 +1,7 @@
 import google.generativeai as genai
 import re
 
-class Tool_RegExGen_KI:
+class LLMRegExGenerator:
 
   def __init__(self, google_API_KEY) -> str:
     self.google_API_KEY = google_API_KEY
@@ -22,7 +22,7 @@ class Tool_RegExGen_KI:
     model = genai.GenerativeModel(
       model_name="gemini-1.5-pro",
       generation_config=generation_config,
-      system_instruction= open('Tool_KI_instruction.txt','r').read())
+      system_instruction= open('LLMRegExGeneratorInstructions.txt','r').read())
 
     response = model.generate_content("Hier sind die Input Strings: " + " ; ".join(inputList))
     return response.text
@@ -37,6 +37,6 @@ class Tool_RegExGen_KI:
           falseCounter += 1
 
     if falseCounter == 0:
-      print("Der Reguläre Ausdruck für den eingegebenen Input ist : " + generatedRegEx)
+      print(generatedRegEx)
     else: 
-      print("Für den eingegebenen Input wurde kein valider Regulärer Ausdruck gefunden!")
+      print("The provided strings dont follow the same pattern")
