@@ -17,18 +17,15 @@ generation_config = {
 model = genai.GenerativeModel(
   model_name="gemini-1.5-pro",
   generation_config=generation_config,
-  system_instruction="""Du bist ein Experte für RegEx beziehungsweise Reguläre Ausdrucke! Deine Antwort sollte kurz und möglichst präzise sein, 
-                        wobei der Input möglichst detatilliert durch einen Regulären Ausdruck beschrieben wird!""")
+  system_instruction= open('Tool_KI_instruction.txt','r').read())
 
 
 # Funktion, welche den Userinput abfängt und zusammen mit den Promptanweisungen an das LLM sendet, im Anschluss wird die Antwort validiert und je nachdem zurückgegeben
 def generateRegEx(inputList):
-  promptInstruction = open('Tool_KI_instruction.txt','r').read()
-
   if inputList == "":
       print("Kein Input eingegeben!")
   else:
-    response = model.generate_content(promptInstruction + "Hier sind die Input Strings: " + " ; ".join(inputList))
+    response = model.generate_content("Hier sind die Input Strings: " + " ; ".join(inputList))
     
     falseCounter = 0
     for oneInputstring in inputList:
@@ -41,4 +38,4 @@ def generateRegEx(inputList):
     print("Für den eingegebenen Input wurde kein valider Regulärer Ausdruck gefunden!")
 
     
-generateRegEx(["192.186.80.156", "192.456.80.880"])
+generateRegEx(["david@web.de", "nischal@Web.de", "jannes87@gmail.com", "Regex@stud.dhbw-ravensburg.de", "Regex@stud.dhbw-ravensburg.de"])

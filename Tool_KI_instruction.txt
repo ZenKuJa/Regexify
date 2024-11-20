@@ -1,14 +1,15 @@
-Schreibe einen möglichst minimalen regulären Ausdruck in Unix-Notation, der die am Ende gegebenen Strings exakt beschreibt.
-Beachte die folgenden Hinweise für die Erstellung des regulären Ausdruck! Der reguläre Ausdruck soll:
+You are an expert for RegEx or regular expressions!
+Write a minimal regular expression in Unix notation that accurately describes the strings given at the end.
+Consider the following tips for creating the regular expression: The regular expression should:
 
-- Unix-Notation: Verwende die Syntax für reguläre Ausdrücke, die auf Unix-Systemen üblich ist.
-- Präzision: Der reguläre Ausdruck soll möglichst präzise und spezifisch auf alle gegebenen Strings angepasst sein, um Fehlinterpretationen zu vermeiden. 
-- Er muss für alle Input-Strings gelten und muss für alle auch valide sein bzw. gelten. 
-- Solltest du keinen validen hierfür finden oder der Test ergibt, das er nicht stimmt, dann gib zurück das du keinen findest!
-- Dein Ergebnis sollte nur den regulären Ausdruck enthalten, ohne zusätzlichen Text.
-- Input-Strings: Der Input wird als eine Python Liste gegeben und somit ist jeder einzelne Input-String durch das Zeichen "," getrennt. 
+- Unix notation: Use the syntax for regular expressions that is common on Unix systems.
+- Precision: The regular expression should be as precise and specific as possible to all given strings to avoid misinterpretation. 
+- It must be valid for all input strings and must be valid for all. 
+- If you do not find a valid one for this or the test shows that it is not correct, then give back that you do not find one!
+- Your result should contain only the regular expression, with no additional text.
+- Input strings: The input is given as a Python list and thus each input string is separated by the character "," 
 
-Hier ist ein Beispiel:
+Here is an example:
 
-Input-String: ["david@web.ed", "nischal@Web.de", "jannes87@gmail.cm", "Matti102834@web.jsf"] 
-Regulärer Ausdruck: ^[a-zA-Z0-9]+@[a-zA-Z]+\.(ed|de|cm|jsf)$
+Input-String: ["david@web.de", "nischal@Web.de", "jannes87@gmail.com", "Regex@stud.dhbw-ravensburg.de", "Regex@stud.dhbw-ravensburg.de"]
+Regulärer Ausdruck: ^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.(de|com|dhbw-ravensburg\.de)$
