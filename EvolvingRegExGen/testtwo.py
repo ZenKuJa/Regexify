@@ -1,3 +1,4 @@
+from EvolvingRegExGeneratorController import EvolvingRegExGeneratorController
 from tkinter import *
 
 window = Tk() 
@@ -12,15 +13,51 @@ jannesPage=Frame(window)
 mattiPage=Frame(window)
 checkPage=Frame(window)
 
+results = ['hallo@gmail.com']
+current_frame = None
+evolvingRegExGenController: EvolvingRegExGeneratorController = EvolvingRegExGeneratorController()
+
 for frame in (mainPage,davidPage,jannesPage,mattiPage,checkPage):
     frame.grid(row=0, column=0, sticky='nsew')
 
 def show_frame(frame):
+    global current_frame
+    current_frame = frame  
     frame.tkraise()
 
-show_frame(mainPage)
 
-regex_output= "[A-Za-z0-9\-\_\.\+]{1,64}@[A-Za-z0-9\-\_\.]+\.[a-zA-Z]+"
+show_frame(mainPage)
+regex_output = 'dsfa'
+
+def get_text_and_source():
+    global current_frame, regex_output
+    if current_frame == davidPage:
+        text = davidPage_textfield.get("1.0", "end-1c").strip()
+        results = text.splitlines()
+        print("Frame: DavidPage")
+        print("Button: RegEx Check (DavidPage)")
+    elif current_frame == jannesPage:
+        text = jannesPage_textfield.get("1.0", "end-1c").strip()
+        results = text.splitlines()
+        test = evolvingRegExGenController.generateRegExFromStringList(results)
+        regex_output = test
+        jannesPage_output.configure(text=regex_output)
+        print("Frame: JannesPage")
+        print("Output: "+test+".."+regex_output)
+        print("Button: RegEx Check (JannesPage)")
+    elif current_frame == mattiPage:
+        text = mattiPage_textfield.get("1.0", "end-1c").strip()
+        results = text.splitlines()
+        print("Frame: MattiPage")
+        print("Button: RegEx Check (MattiPage)")
+    else:
+        print("Kein unterstützter Frame aktiv.")
+        return
+
+    print("Results (Liste von Strings):", results)
+
+
+
 
 def copy_to_clipboard(page,output):
     page.clipboard_clear()
@@ -90,9 +127,9 @@ davidPage_canvas.create_rectangle(
     outline="")
 
 davidPage_textfield = Text(davidPage, wrap=WORD, font=("Helvetica", 14))
-davidPage_textfield.place(x=26, y=40, height=435, width=850)
+davidPage_textfield.place(x=26, y=40, height=470, width=850)
 
-davidPage_generateButton= Button(davidPage, text='RegEx Check',bg='#0184FF',fg='white')
+davidPage_generateButton= Button(davidPage, text='RegEx Check',bg='#0184FF',fg='white',command=get_text_and_source)
 davidPage_generateButton.place(x=26,y=515,width=850,height=70)
 
 davidPage_output= Label(davidPage,text=regex_output,anchor='center',background="#2D3436",font=20,fg='white')
@@ -142,18 +179,10 @@ jannesPage_canvas.create_rectangle(
     fill="#2D3436",
     outline="")
 
-jannesPage_textfield_one = Entry(jannesPage)
-jannesPage_textfield_one.place(x=26,y=40,height=75,width=850)
-jannesPage_textfield_two = Entry(jannesPage)
-jannesPage_textfield_two.place(x=26,y=130,height=75,width=850)
-jannesPage_textfield_three = Entry(jannesPage)
-jannesPage_textfield_three.place(x=26,y=220,height=75,width=850)
-jannesPage_textfield_four = Entry(jannesPage)
-jannesPage_textfield_four.place(x=26,y=310,height=75,width=850)
-jannesPage_textfield_five = Entry(jannesPage)
-jannesPage_textfield_five.place(x=26,y=400,height=75,width=850)
+jannesPage_textfield = Text(jannesPage, wrap=WORD, font=("Helvetica", 14))
+jannesPage_textfield.place(x=26, y=40, height=470, width=850)
 
-jannesPage_generateButton= Button(jannesPage, text='RegEx Check',bg='#0184FF',fg='white')
+jannesPage_generateButton= Button(jannesPage, text='RegEx Check',bg='#0184FF',fg='white',command=get_text_and_source)
 jannesPage_generateButton.place(x=26,y=515,width=850,height=70)
 
 jannesPage_output= Label(jannesPage,text=regex_output,anchor='center',background="#2D3436",font=20,fg='white')
@@ -204,18 +233,10 @@ mattiPage_canvas.create_rectangle(
     fill="#2D3436",
     outline="")
 
-mattiPage_textfield_one = Entry(mattiPage)
-mattiPage_textfield_one.place(x=26,y=40,height=75,width=850)
-mattiPage_textfield_two = Entry(mattiPage)
-mattiPage_textfield_two.place(x=26,y=130,height=75,width=850)
-mattiPage_textfield_three = Entry(mattiPage)
-mattiPage_textfield_three.place(x=26,y=220,height=75,width=850)
-mattiPage_textfield_four = Entry(mattiPage)
-mattiPage_textfield_four.place(x=26,y=310,height=75,width=850)
-mattiPage_textfield_five = Entry(mattiPage)
-mattiPage_textfield_five.place(x=26,y=400,height=75,width=850)
+mattiPage_textfield = Text(mattiPage, wrap=WORD, font=("Helvetica", 14))
+mattiPage_textfield.place(x=26, y=40, height=470, width=850)
 
-mattiPage_generateButton= Button(mattiPage, text='RegEx Check',bg='#0184FF',fg='white')
+mattiPage_generateButton= Button(mattiPage, text='RegEx Check',bg='#0184FF',fg='white',command=get_text_and_source)
 mattiPage_generateButton.place(x=26,y=515,width=850,height=70)
 
 mattiPage_output= Label(davidPage,text=regex_output,anchor='center',background="#2D3436",font=20,fg='white')
@@ -296,6 +317,6 @@ checkPage_loremlabel = Label(
 checkPage_loremlabel.place(x=944,y=165,width=375,height=465)
 
 
-window.mainloop()
 
+window.mainloop()
 
