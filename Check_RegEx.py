@@ -7,7 +7,6 @@ falseCounter = 0
 for i in text:
     if re.search(regex, i.strip()):
       falseCounter =+ 1
-      
 
 if falseCounter == 0:
   print("Stimmt nicht überein!")
