@@ -1,4 +1,4 @@
-class CharSet:
+class EvolvingCharSet:
 
     name: str
     chars: str
@@ -19,5 +19,3 @@ class CharSet:
 
     def get_name(self) -> str:
         return self.name
-
-

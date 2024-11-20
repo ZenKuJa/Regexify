@@ -1,11 +1,11 @@
 from typing import Union
 
-from CharSet import CharSet
-from RegExPart import RegExPart
+from EvolvingCharSet import EvolvingCharSet
+from EvolvingRegExPart import EvolvingRegExPart
 
 
-class RegularExpression:
-    reg_ex_structure: list[RegExPart]
+class EvolvingRegularExpression:
+    reg_ex_structure: list[EvolvingRegExPart]
     reg_ex_operators: list[str]
 
     max_occurring_strings: int = 3
@@ -18,8 +18,8 @@ class RegularExpression:
             ".", "*", "+", "?", "$", "|", "^", "\\", "-", "(", ")", "{", "}", "[", "]"
         ]
 
-    def append(self, char_set: CharSet, occurring_strings: list[str], min_amount: int, max_amount: int) -> None:
-        new_reg_ex_part: RegExPart = RegExPart(list(set(occurring_strings)), char_set, min_amount, max_amount)
+    def append(self, char_set: EvolvingCharSet, occurring_strings: list[str], min_amount: int, max_amount: int) -> None:
+        new_reg_ex_part: EvolvingRegExPart = EvolvingRegExPart(list(set(occurring_strings)), char_set, min_amount, max_amount)
         self.reg_ex_structure.append(new_reg_ex_part)
     
     def to_str(self) -> str:
@@ -78,11 +78,11 @@ class RegularExpression:
 
         return f"^{return_str}$"
 
-    def get_reg_ex_parts(self) -> list[RegExPart]:
+    def get_reg_ex_parts(self) -> list[EvolvingRegExPart]:
         return self.reg_ex_structure
 
-    def get_reg_ex_order(self) -> list[CharSet]:
-        reg_ex_order: list[CharSet] = []
+    def get_reg_ex_order(self) -> list[EvolvingCharSet]:
+        reg_ex_order: list[EvolvingCharSet] = []
         for part in self.reg_ex_structure:
             reg_ex_order.append(part.get_char_set())
 

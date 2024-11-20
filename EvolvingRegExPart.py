@@ -1,14 +1,14 @@
-from CharSet import CharSet
+from EvolvingCharSet import EvolvingCharSet
 
 
-class RegExPart:
+class EvolvingRegExPart:
 
     occurring_strings: list[str]
-    char_set: CharSet
+    char_set: EvolvingCharSet
     min_length: int
     max_length: int
 
-    def __init__(self, occurring_strings: list[str], char_set: CharSet, min_length: int, max_length: int) -> None:
+    def __init__(self, occurring_strings: list[str], char_set: EvolvingCharSet, min_length: int, max_length: int) -> None:
         self.occurring_strings = occurring_strings
         self.char_set = char_set
         self.min_length = min_length
@@ -17,7 +17,7 @@ class RegExPart:
     def set_occurring_strings(self, occurring_strings: list[str]) -> None:
         self.occurring_strings = occurring_strings
 
-    def set_char_set(self, char_set: CharSet) -> None:
+    def set_char_set(self, char_set: EvolvingCharSet) -> None:
         self.char_set = char_set
 
     def set_min_length(self, min_length: int) -> None:
@@ -33,7 +33,7 @@ class RegExPart:
         occurring_chars = "".join(sorted(set(self.occurring_strings)))
         return occurring_chars
 
-    def get_char_set(self) -> CharSet:
+    def get_char_set(self) -> EvolvingCharSet:
         return self.char_set
 
     def get_min_length(self) -> int:
