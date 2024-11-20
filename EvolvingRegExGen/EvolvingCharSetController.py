@@ -6,7 +6,7 @@ class EvolvingCharSetController:
     my_alphabet: list[EvolvingCharSet] = []
 
     def __init__(self):
-        tree = eTree.parse(source="CharSetData.xml")
+        tree = eTree.parse(source="../Data/CharSetData.xml")
         xml_char_set = tree.findall(".//char_set")
 
         for xml_element in xml_char_set:
