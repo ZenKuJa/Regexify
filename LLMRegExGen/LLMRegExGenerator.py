@@ -24,7 +24,7 @@ class LLMRegExGenerator:
     model = genai.GenerativeModel(
       model_name="gemini-1.5-pro",
       generation_config=generation_config,
-      system_instruction= open('LLMRegExGeneratorInstructions.txt','r').read())
+      system_instruction= open(r'LLMRegExGen\LLMRegExGeneratorInstructions.txt','r').read())
 
     #Antwort generieren
     response = model.generate_content("Hier sind die Input Strings: " + " ; ".join(inputList))
@@ -39,6 +39,6 @@ class LLMRegExGenerator:
           falseCounter += 1
 
     if falseCounter == 0:
-      print(generatedRegEx)
+      return str(generatedRegEx)
     else: 
-      print("The provided strings dont follow the same pattern")
+      return "The provided strings dont follow the same pattern"
