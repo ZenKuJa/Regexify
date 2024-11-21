@@ -1,4 +1,4 @@
-from LLMRegExGenerator import LLMRegExGenerator
+from LLMRegExGen.LLMRegExGenerator import LLMRegExGenerator
 
 class LLMRegExGeneratorController:
 
