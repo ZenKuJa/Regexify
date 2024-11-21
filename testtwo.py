@@ -1,5 +1,6 @@
 from EvolvingRegExGen.EvolvingRegExGeneratorController import EvolvingRegExGeneratorController
 from LLMRegExGen.LLMRegExGeneratorController import LLMRegExGeneratorController
+from ParallelRegExGen.parallelController import ParallelController
 from tkinter import *
 
 window = Tk() 
@@ -18,6 +19,7 @@ results = ['hallo@gmail.com']
 current_frame = None
 evolvingRegExGenController: EvolvingRegExGeneratorController = EvolvingRegExGeneratorController()
 llmRegExGeneratorController: LLMRegExGeneratorController= LLMRegExGeneratorController()
+parallelController: ParallelController = ParallelController()
 
 for frame in (mainPage,davidPage,jannesPage,mattiPage,checkPage):
     frame.grid(row=0, column=0, sticky='nsew')
@@ -29,7 +31,7 @@ def show_frame(frame):
 
 
 show_frame(mainPage)
-regex_output = 'dsfa'
+regex_output = 'output'
 
 def get_text_and_source():
     global current_frame, regex_output
@@ -52,7 +54,11 @@ def get_text_and_source():
     elif current_frame == mattiPage:
         text = mattiPage_textfield.get("1.0", "end-1c").strip()
         results = text.splitlines()
+        test = parallelController.generate_regex_from_strings(results)
+        regex_output = test
+        mattiPage_output.configure(text=regex_output)
         print("Frame: MattiPage")
+        print("Output: "+" "+regex_output)
         print("Button: RegEx Check (MattiPage)")
     else:
         print("Kein unterstützter Frame aktiv.")
@@ -243,7 +249,7 @@ mattiPage_textfield.place(x=26, y=40, height=470, width=850)
 mattiPage_generateButton= Button(mattiPage, text='RegEx Check',bg='#0184FF',fg='white',command=get_text_and_source)
 mattiPage_generateButton.place(x=26,y=515,width=850,height=70)
 
-mattiPage_output= Label(davidPage,text=regex_output,anchor='center',background="#2D3436",font=20,fg='white')
+mattiPage_output= Label(mattiPage,text=regex_output,anchor='center',background="#2D3436",font=20,fg='white')
 mattiPage_output.place(x=25,y=625,width=750,height=75)
 
 mattiPage_copy= Button(mattiPage,text='c',command=copy_to_clipboard(jannesPage,jannesPage_output))
