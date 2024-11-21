@@ -1,7 +1,8 @@
 import re
 
-text = ["david@web.de", "nischal@Web.de", "jannes87@gmail.com", "Matti102834@web.gov"]
-regex = r"^[a-zA-Z0-9]+@[a-zA-Z]+\.(de|com|gov)$"
+text = ["moin@web.de", "nischal@gmail.com"]
+regex = r'^[a-z]{4,7}[@/\*#-_€"][a-z]{3,5}[., !?;:][a-z]{2,3}$'
+
 
 falseCounter = 0
 for i in text:
