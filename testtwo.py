@@ -36,6 +36,8 @@ def get_text_and_source():
     if current_frame == davidPage:
         text = davidPage_textfield.get("1.0", "end-1c").strip()
         results = text.splitlines()
+        test1 = llmRegExGeneratorController.generateRegExFromStringList(results)
+        regex_output = test1
         print("Frame: DavidPage")
         print("Button: RegEx Check (DavidPage)")
     elif current_frame == jannesPage:
