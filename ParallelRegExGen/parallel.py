@@ -120,8 +120,7 @@ class ParallelRegexGenerator:
             second_keys_regex, second_values = ParallelRegexGenerator.to_regex(second_enc)
 
             if first_keys_regex != second_keys_regex:
-                print("not the same pattern")
-                return None
+                return("These strings do not follow a similar pattern")
             else: keys = first_keys_regex
 
 
