@@ -1,7 +1,5 @@
-from typing import Union
-
-from EvolvingCharSet import EvolvingCharSet
-from EvolvingRegExPart import EvolvingRegExPart
+from EvolvingRegExGen.EvolvingCharSet import EvolvingCharSet
+from EvolvingRegExGen.EvolvingRegExPart import EvolvingRegExPart
 
 
 class EvolvingRegularExpression:

@@ -1,6 +1,4 @@
-from EvolvingRegEx import EvolvingRegularExpression
-from EvolvingRegExGenerator import EvolvingRegExGenerator
-from EvolvingRegExGeneratorController import EvolvingRegExGeneratorController
+from EvolvingRegExGen.EvolvingRegExGeneratorController import EvolvingRegExGeneratorController
 
 
 def main():
