@@ -24,7 +24,7 @@ class LLMRegExGenerator:
     model = genai.GenerativeModel(
       model_name="gemini-1.5-pro",
       generation_config=generation_config,
-      system_instruction= open('LLMRegExGeneratorInstructions.txt','r').read())
+      system_instruction= open('LLMRegExGeneratorInstructions.txt', 'r').read())
 
     #Antwort generieren
     response = model.generate_content("Hier sind die Input Strings: " + " ; ".join(inputList))
