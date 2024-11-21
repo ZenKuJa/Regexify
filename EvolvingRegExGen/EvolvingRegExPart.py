@@ -1,4 +1,4 @@
-from EvolvingCharSet import EvolvingCharSet
+from EvolvingRegExGen.EvolvingCharSet import EvolvingCharSet
 
 
 class EvolvingRegExPart:
