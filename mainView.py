@@ -6,6 +6,7 @@ window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
 window.geometry("1366x768")
 window.title('RegEx Generator')
+window.resizable=False
 
 # Global variables
 regex_output = "[A-Za-z0-9\\-\\_\\.\\+]{1,64}@[A-Za-z0-9\\-\\_\\.]+\\.[a-zA-Z]+"
@@ -96,7 +97,7 @@ for name in ["davidPage", "jannesPage", "mattiPage"]:
     text_widget = Text(page, wrap="word", font=("Helvetica", 16), bg="white", fg="black")
     text_widget.place(x=26, y=40, height=450, width=850)
 
-    Button(page, text='RegEx Check', bg='#0184FF', fg='white').place(x=26, y=515, width=850, height=70)
+    Button(page, text='Generieren', bg='#0184FF', fg='white').place(x=26, y=515, width=850, height=70)
     output_label = Label(page, text=regex_output, anchor='center', background="#2D3436", font=20, fg='white')
     output_label.place(x=25, y=625, width=750, height=75)
     Button(page, text='c', command=lambda p=page, o=output_label: copy_to_clipboard(p, o)).place(x=800, y=635, width=50, height=50)
