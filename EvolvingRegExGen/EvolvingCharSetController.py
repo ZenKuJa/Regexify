@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as eTree
-from EvolvingCharSet import EvolvingCharSet
+from EvolvingRegExGen.EvolvingCharSet import EvolvingCharSet
 
 class EvolvingCharSetController:
 
