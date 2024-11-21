@@ -91,7 +91,7 @@ class ParallelRegexGenerator:
                     continue
                 final.append("{" + str(final_lower[i]) + "}")
             elif case == 3:
-                final.append("{" + f"{final_lower[i]}-{final_upper[i]}" + "}")
+                final.append("{" + f"{final_lower[i]},{final_upper[i]}" + "}")
         final.append("$")
 
 
