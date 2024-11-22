@@ -89,16 +89,8 @@ davidPage_canvas.create_rectangle(
     fill="#2D3436",
     outline="")
 
-davidPage_textfield_one = Entry(davidPage)
-davidPage_textfield_one.place(x=26,y=40,height=75,width=850)
-davidPage_textfield_two = Entry(davidPage)
-davidPage_textfield_two.place(x=26,y=130,height=75,width=850)
-davidPage_textfield_three = Entry(davidPage)
-davidPage_textfield_three.place(x=26,y=220,height=75,width=850)
-davidPage_textfield_four = Entry(davidPage)
-davidPage_textfield_four.place(x=26,y=310,height=75,width=850)
-davidPage_textfield_five = Entry(davidPage)
-davidPage_textfield_five.place(x=26,y=400,height=75,width=850)
+davidPage_textfield = Text(davidPage, wrap=WORD, font=("Helvetica", 14))
+davidPage_textfield.place(x=26, y=40, height=435, width=850)
 
 davidPage_generateButton= Button(davidPage, text='RegEx Check',bg='#0184FF',fg='white')
 davidPage_generateButton.place(x=26,y=515,width=850,height=70)

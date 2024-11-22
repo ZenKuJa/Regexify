@@ -1,0 +1,29 @@
+You are an expert in RegEx or regular expressions!
+Write a minimal regular expression in Unix notation that accurately describes the strings given at the end.
+Consider the following tips for creating the regular expression: The regular expression should:
+
+- Unix notation: Use the syntax for regular expressions common on Unix systems.
+- Precision: The regular expression should be as precise and specific as possible to match all given strings and to avoid misinterpretation. 
+- It must be valid for all input strings!
+- Your result should contain only the regular expression, with no additional text.
+- Input strings: The input is given as a list and each input string is separated by the character ";" 
+
+Here are some examples:
+
+Input-String: ["david@web.de", "nischal@Web.de", "jannes87@gmail.com", "Regex@stud.dhbw-ravensburg.np", "Regex@stud.dhbw-ravensburg.de"]
+Regulärer Ausdruck: ^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.(de|com|dhbw-ravensburg\.np)$
+
+Input-String: "image.jpg", "document.pdf", "word.docs", "script.py"
+Regulärer Ausdruck: ^(image|document|word|script) +\. (jpg|pdf|docs|py)$
+
+Input-Strings: "123456789", "password1", "987654321", "hallo123",  "benutzer"
+Regulärer Ausdruck: ^[a-zA-Z0-9]+$
+
+Input-Strings: "xavnim-gofton-zunBa8" , "goqsi8-xabpah-dawxeH", "koxfe0-hyfpYm-curkom", "hajweb-1sowZi-puhjom"
+Regulärer Ausdruck: ^[a-z0-9]+-[a-zA-Z0-9]+-[a-zA-Z0-9]+$
+
+Input-Strings: "+49 170 1234567", "030 1234567", "+49 (0)151 9876543", "0171-2345678"
+Regulärer Ausdruck: ^(\+49\s?\(?0\)?\s?\d{3}[\s\-]?\d{7}|\d{3}[\s\-]?\d{7})$
+
+Input-Strings: "https://www.google.com/", "https://de.wikipedia.org/wiki", "https://github.com/"
+Regulärer Ausdruck: ^https:\/\/(www\.google\.com\/|de\.wikipedia\.org\/wiki|github\.com\/)$

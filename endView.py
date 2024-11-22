@@ -1,4 +1,5 @@
 from tkinter import *
+from EvolvingRegExGeneratorController import EvolvingRegExGeneratorController
 
 # Initialize the main window
 window = Tk()
@@ -6,6 +7,9 @@ window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
 window.geometry("1366x768")
 window.title('RegEx Generator')
+
+# Initialize Controller
+controller = EvolvingRegExGeneratorController()
 
 # Global variables
 regex_output = "[A-Za-z0-9\\-\\_\\.\\+]{1,64}@[A-Za-z0-9\\-\\_\\.]+\\.[a-zA-Z]+"
@@ -20,6 +24,16 @@ def copy_to_clipboard(page, output):
     page.clipboard_append(output.cget("text"))
     page.update()
 
+# Create frames dynamically
+frames = {}
+frame_names = ["mainPage", "davidPage", "jannesPage", "mattiPage", "checkPage"]
+for name in frame_names:
+    frame = Frame(window)
+    frame.grid(row=0, column=0, sticky='nsew')
+    frames[name] = frame
+
+show_frame(frames["mainPage"])
+
 # Function to create a canvas for a page
 def create_canvas(parent, color, rect_color):
     canvas = Canvas(parent, bg=color, height=768, width=1366, bd=0, highlightthickness=0, relief="ridge")
@@ -33,14 +47,14 @@ def create_nav_buttons(parent, main_frame):
         x=1055, y=660, width=150, height=30
     )
 
-# Function to create subpage elements
+# Common elements for all sub-pages
 def create_subpage_elements(parent, name):
     Label(parent, text=name, anchor='center', background='#0184FF', font=('fixedsys', 20), fg='white').place(
         x=944, y=82, width=375, height=75
     )
     Label(
         parent,
-        text=(
+        text=( 
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
             "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
             "when an unknown printer took a galley of type and scrambled it to make a type specimen book."
@@ -53,24 +67,6 @@ def create_subpage_elements(parent, name):
         bg='#1B1C1E'
     ).place(x=944, y=165, width=375, height=465)
 
-# Function to retrieve lines from the Text widget
-def get_input_lines(text_widget):
-    """
-    Gibt die Inhalte des Text-Widgets als Liste von Strings zurück, 
-    wobei jede Zeile ein eigenes Listenelement ist.
-    """
-    return text_widget.get("1.0", "end-1c").split("\n")  # Entfernt das letzte neue Zeilenzeichen
-
-# Create frames dynamically
-frames = {}
-frame_names = ["mainPage", "davidPage", "jannesPage", "mattiPage", "checkPage"]
-for name in frame_names:
-    frame = Frame(window)
-    frame.grid(row=0, column=0, sticky='nsew')
-    frames[name] = frame
-
-show_frame(frames["mainPage"])
-
 # Main page
 main_canvas = create_canvas(frames["mainPage"], "black", "#2D3436")
 main_canvas.create_text(
@@ -80,6 +76,7 @@ Label(frames["mainPage"], text='Choose your model', anchor='center', background=
     x=115, y=359, width=675, height=100
 )
 
+# Main page buttons
 buttons = [
     ("KI-Ansatz", "davidPage", 225),
     ("Jannes", "jannesPage", 344),
@@ -99,40 +96,53 @@ for name in ["davidPage", "jannesPage", "mattiPage"]:
     page = frames[name]
     canvas = create_canvas(page, "black", "#2D3436")
     
-    # Text-Widget erstellen
+    # Erstellen des Eingabe-Widgets
     text_widget = Text(page, wrap="word", font=("Helvetica", 16), bg="white", fg="black")
     text_widget.place(x=26, y=40, height=450, width=850)
 
-    # Funktion zum Verarbeiten der Eingabe und Aktualisieren der Ausgabe
-    def process_input_and_update_output():
-        input_lines = get_input_lines(text_widget)  # Ruft die Zeilen des Inputs ab
-        # Hier würde der Controller die Daten an das Model weitergeben
-        # Simuliert: Beispielausgabe vom Model basierend auf dem Input
-        processed_output = f"Processed {len(input_lines)} lines:\n" + "\n".join(input_lines)
-        regex_output_label.config(text=processed_output)
+    # Ausgabe-Label
+    output_label = Label(page, text=regex_output, anchor='center', background="#2D3436", font=20, fg='white')
+    output_label.place(x=25, y=625, width=750, height=75)
+    
+    # Funktion zur Verarbeitung der Eingabe
+    def process_regex():
+        # Eingabe aus dem Text-Widget abrufen
+        input_text = text_widget.get("1.0", END)  # Gesamte Eingabe abrufen
+        print(f"DEBUG: Eingabe vor strip() -> '{input_text}'")  # Debugging der rohen Eingabe
+        input_text = input_text.strip()
+        print(f"DEBUG: Eingabe nach strip() -> '{input_text}'")  # Debugging nach Entfernen von Leerzeichen
 
-    # Button, der die Verarbeitung startet
-    Button(page, text='RegEx Check', bg='#0184FF', fg='white', command=process_input_and_update_output).place(
+        # Zeilenweise Verarbeitung
+        string_list = [line.strip() for line in input_text.split("\n") if line.strip()]  # Leere Zeilen entfernen
+        print(f"DEBUG: Verarbeitete Liste -> {string_list}")  # Debugging der Liste
+
+        if not string_list:  # Wenn die Liste leer ist
+            output_label.config(text="Bitte geben Sie einen oder mehrere gültige Strings ein!")  # Feedback
+            return
+
+        try:
+            regex_result = controller.generateRegExFromStringList(string_list)  # Controller aufrufen
+            print(f"DEBUG: Ergebnis -> {regex_result}")  # Debugging des Ergebnisses
+            output_label.config(text=regex_result)
+        except Exception as e:
+            print(f"ERROR: {e}")  # Fehler ausgeben
+            output_label.config(text="Fehler bei der Verarbeitung!")
+
+
+    # Button zum Ausführen der Funktion
+    Button(page, text='RegEx Check', bg='#0184FF', fg='white', command=process_regex).place(
         x=26, y=515, width=850, height=70
     )
 
-    # Ausgabe-Label
-    regex_output_label = Label(page, text=regex_output, anchor='center', background="#2D3436", font=20, fg='white')
-    regex_output_label.place(x=25, y=625, width=750, height=75)
-
-    Button(page, text='c', command=lambda p=page, o=regex_output_label: copy_to_clipboard(p, o)).place(
+    # Button zum Kopieren der Ausgabe
+    Button(page, text='c', command=lambda p=page: copy_to_clipboard(p, output_label)).place(
         x=800, y=635, width=50, height=50
     )
+    
     create_nav_buttons(page, frames["mainPage"])
     create_subpage_elements(page, name.split("Page")[0])
 
-# Check page
-check_canvas = create_canvas(frames["checkPage"], "black", "#0184FF")
-Entry(frames["checkPage"]).place(x=26, y=40, height=275, width=850)
-Entry(frames["checkPage"]).place(x=26, y=320, height=275, width=850)
-Button(frames["checkPage"], text='RegEx Check', width=65, height=4, bg='#555A5E', fg='white').place(x=219, y=645)
-create_nav_buttons(frames["checkPage"], frames["mainPage"])
-create_subpage_elements(frames["checkPage"], "Funktion")
+
 
 # Run the application
 window.mainloop()

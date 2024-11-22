@@ -1,0 +1,40 @@
+- Emails --
+thomas123@web.de, martin987@web.com, christian@bundestag.gov
+max28@stud.dhbw-ravensburg.de, Moritz2000@outlook.de, Info_dhbw@gmail.com, support24@dhbw-stuttgart.org
+
+-- IPv4-Adressen --
+123.234.46.122, 1.234.4.123, 123.0.12.111
+192.168.254.99, 172.31.98.255, 10.203.56.210, 255.128.33.77
+
+-- Dateinamen --
+Hintergrundbild.jpg, Semesterbescheid.pdf, Projektarbeit.docs
+Hintergrundbild4k.jpg, Semesterbescheid_3Semester.pdf, PA1.docs, Gemini_Api_Key.txt
+
+-- Passwörter --
+benutzer123, hallo, password, iloveyou
+gYnwit-cadwoj-7robbu , puwcub-4hucbe-tefPic, nekbop-5bohpu-vEcsut, zibQax-4zykta-syjget
+
+-- Telefonnummern --
++4916212345678 , 004916209876543, +18005550199
+040 7654321, +49 (0)152 1234567, 0151-9876543, +49 160 9876543
+
+-- Postleitzahlen --
+50667, 88662, 88214, 88212
+80331 13417, 8099, 70123
+
+-- Website-Urls --
+https://www.google.com/, https://elearning.dhbw-ravensburg.de/, https://rapla-ravensburg.dhbw.de/, https://dualis.dhbw.de/
+https://github.com/ZenKuJa/Regexify, http://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=RegEx&btnG=, https://finance.yahoo.com/quote/AAPL/
+
+
+-------------------------------------------------------------------------------
+import time
+
+start = time.time()
+
+# Code der getestet werden soll
+
+end = time.time()
+
+verstrichene_zeit = end - start
+print("Ausführungszeit: " + verstrichene_zeit + " Sekunden")
