@@ -10,8 +10,8 @@ Consider the following tips for creating the regular expression: The regular exp
 
 Here are some examples:
 
-Input-String: ["david@web.de", "nischal@Web.de", "jannes87@gmail.com", "Regex@stud.dhbw-ravensburg.de", "Regex@stud.dhbw-ravensburg.de"]
-Regulärer Ausdruck: ^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.(de|com|dhbw-ravensburg\.de)$
+Input-String: ["david@web.de", "nischal@Web.de", "jannes87@gmail.com", "Regex@stud.dhbw-ravensburg.np", "Regex@stud.dhbw-ravensburg.de"]
+Regulärer Ausdruck: ^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.(de|com|dhbw-ravensburg\.np)$
 
 Input-String: "image.jpg", "document.pdf", "word.docs", "script.py"
 Regulärer Ausdruck: ^(image|document|word|script) +\. (jpg|pdf|docs|py)$
