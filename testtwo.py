@@ -62,6 +62,7 @@ def get_text_and_source():
         print("Frame: MattiPage")
         print("Output: "+" "+regex_output)
         print("Button: RegEx Check (MattiPage)")
+    
     else:
         print("Kein unterstützter Frame aktiv.")
         return
@@ -71,10 +72,10 @@ def get_text_and_source():
 
 
 
-def copy_to_clipboard(page,output):
+def copy_to_clipboard(page, output):
     page.clipboard_clear()
     page.clipboard_append(output.cget("text"))
-    page.update()  
+    page.update()
 
 #-----------menu page ----------------
 
@@ -147,7 +148,7 @@ davidPage_generateButton.place(x=26,y=515,width=850,height=70)
 davidPage_output= Label(davidPage,text=regex_output,anchor='center',background="#2D3436",font=20,fg='white')
 davidPage_output.place(x=25,y=625,width=750,height=75)
 
-davidPage_copy= Button(davidPage,text='c',command=copy_to_clipboard(davidPage,davidPage_output))
+davidPage_copy= Button(davidPage,text='c',command= lambda:copy_to_clipboard(davidPage,davidPage_output))
 davidPage_copy.place(x=800,y=635,width=50,height=50)
 
 davidPage_menuButton = Button(davidPage,text='RegEx Generator',background='#0184FF',fg='white',command=lambda: show_frame(mainPage))
@@ -159,9 +160,7 @@ davidPage_model.place(x=944,y=82,width=375,height=75)
 davidPage_loremlabel = Label(
     davidPage, 
     text=(
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-        "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
-        "when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        'Dieser Ansatz nutzt die API von Gemini, um eine Anfrage an das Large Language Modell "Gemini-1.5-pro"  zu stellen und folglich einen validen Regulären Ausdruck für den gegebenen Input zu finden'
     ),
     wraplength=300,  
     justify="left", 
@@ -200,7 +199,7 @@ jannesPage_generateButton.place(x=26,y=515,width=850,height=70)
 jannesPage_output= Label(jannesPage,text=regex_output,anchor='center',background="#2D3436",font=20,fg='white')
 jannesPage_output.place(x=25,y=625,width=750,height=75)
 
-jannesPage_copy= Button(jannesPage,text='c',command=copy_to_clipboard(jannesPage,jannesPage_output))
+jannesPage_copy= Button(jannesPage,text='c',command=lambda: copy_to_clipboard(jannesPage,jannesPage_output))
 jannesPage_copy.place(x=800,y=635,width=50,height=50)
 
 jannesPage_menuButton = Button(jannesPage,text='RegEx Generator',background='#0184FF',fg='white',command=lambda: show_frame(mainPage))
@@ -254,7 +253,7 @@ mattiPage_generateButton.place(x=26,y=515,width=850,height=70)
 mattiPage_output= Label(mattiPage,text=regex_output,anchor='center',background="#2D3436",font=20,fg='white')
 mattiPage_output.place(x=25,y=625,width=750,height=75)
 
-mattiPage_copy= Button(mattiPage,text='c',command=copy_to_clipboard(jannesPage,jannesPage_output))
+mattiPage_copy= Button(mattiPage,text='c',command=lambda: copy_to_clipboard(jannesPage,jannesPage_output))
 mattiPage_copy.place(x=800,y=635,width=50,height=50)
 
 
@@ -299,9 +298,9 @@ checkPage_canvas.create_rectangle(
     fill="#0184FF",
     outline="")
 
-checkPage_textfield_one = Entry(checkPage)
+checkPage_textfield_one = Entry(checkPage,font=25)
 checkPage_textfield_one.place(x=26,y=40,height=275,width=850)
-checkPage_textfield_two = Entry(checkPage)
+checkPage_textfield_two = Entry(checkPage,font=25)
 checkPage_textfield_two.place(x=26,y=320,height=275,width=850)
 
 checkPage_checkButton= Button(checkPage, text='RegEx Check',width=65,height=4,bg='#555A5E',fg='white')
