@@ -39,7 +39,7 @@ frame_background = '#050A37'
 secondary_background = '#063A6B'
 #----------------------------------
 
-copy_image = PhotoImage(file='virus.png')
+copy_image = PhotoImage(file='copy_button.png')
 copy_image_label = Label(image=copy_image)
 results = ['hallo@gmail.com']
 checkPage_input = []
