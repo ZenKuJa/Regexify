@@ -41,6 +41,7 @@ secondary_background = '#063A6B'
 
 copy_image = PhotoImage(file='copy_button.png')
 copy_image_label = Label(image=copy_image)
+preset_text="Enter your string input(s). You may provide multiple strings. \nIf the inputs share a common pattern, a regular expression (regex) \nwill be generated when you press the 'Generate' button"
 results = ['hallo@gmail.com']
 checkPage_input = []
 checkPage_input_regex: str
@@ -101,6 +102,12 @@ def copy_to_clipboard(page, output):
     page.clipboard_append(output.cget("text"))
     page.update()
 
+def clear_text_on_focus(event, widget):
+    if widget.get("1.0", "end-1c") == preset_text:
+        widget.delete("1.0", "end")
+        widget.config(fg="black",font=("Helvetica", 14))
+        widget.unbind("<Button-1>")
+
 
 #-----------menu page ----------------
 
@@ -112,11 +119,11 @@ mainPage_canvas.create_text(175,300,anchor="nw",text="RegEx Generator",fill="whi
 mainPage_choose = Label(mainPage,text='Choose your model',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
 mainPage_choose.place(x=115,y=380,width=675,height=100)
 
-mainPage_davidButton= Button(mainPage,text='KI-Ansatz',font=label_font,bg=higlight_blue,fg='white',command=lambda: show_frame(davidPage))
+mainPage_davidButton= Button(mainPage,text='AI-Model',font=label_font,bg=higlight_blue,fg='white',command=lambda: show_frame(davidPage))
 mainPage_davidButton.place(x=947, y=175, width=360, height=80)
-mainPage_jannesButton= Button(mainPage,text='Jannes',width=50,font=label_font,height=5,bg=higlight_blue,fg='white',command=lambda: show_frame(jannesPage))
+mainPage_jannesButton= Button(mainPage,text='Evolving-Model',width=50,font=label_font,height=5,bg=higlight_blue,fg='white',command=lambda: show_frame(jannesPage))
 mainPage_jannesButton.place(x=947,y=294, width=360, height=80)
-mainPage_mattiButton= Button(mainPage,text='Matti',width=50,height=5,font=label_font,bg=higlight_blue,fg='white',command=lambda: show_frame(mattiPage))
+mainPage_mattiButton= Button(mainPage,text='Parallel-Model',width=50,height=5,font=label_font,bg=higlight_blue,fg='white',command=lambda: show_frame(mattiPage))
 mainPage_mattiButton.place(x=947,y=413, width=360, height=80)
 
 mainPage_checkButton= Button(mainPage, text='RegEx Check',width=30,height=2,bg='#0056A7',fg='white',font='fixedsys',command=lambda: show_frame(checkPage))
@@ -128,8 +135,10 @@ davidPage_canvas = Canvas(davidPage,bg = frame_background,height = 768,width = 1
 davidPage_canvas.place(x = 0, y = 0)
 davidPage_canvas.create_rectangle(15.0,16.0,890.0,752.0,fill=secondary_background,outline="")
 
-davidPage_textfield = Text(davidPage, wrap=WORD, font=("Helvetica", 14))
+davidPage_textfield = Text(davidPage, wrap=WORD, font=("Helvetica", 14,'italic'),fg='lightgrey')
 davidPage_textfield.place(x=26, y=40, height=470, width=850)
+davidPage_textfield.insert('1.0',preset_text)
+davidPage_textfield.bind("<Button-1>", lambda event: clear_text_on_focus(event, davidPage_textfield))
 
 davidPage_generateButton= Button(davidPage, text='Generate',bg=higlight_blue,fg='white',font=label_font,command=get_text_and_source)
 davidPage_generateButton.place(x=26,y=515,width=850,height=70)
@@ -143,7 +152,7 @@ davidPage_copy.place(x=800,y=635,width=50,height=50)
 davidPage_menuButton = Button(davidPage,text='RegEx Generator',background=higlight_blue,fg='white',command=lambda: show_frame(mainPage))
 davidPage_menuButton.place(x=1055,y=660,width=150,height=30)
 
-davidPage_model= Label(davidPage,text='KI-Ansatz',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
+davidPage_model= Label(davidPage,text='AI-Model',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
 davidPage_model.place(x=944,y=82,width=375,height=75)
 
 davidPage_loremlabel = Label(davidPage,wraplength=300,  justify="left", font=("Helvetica", 20 ), anchor=('n'),fg='white',bg=secondary_background, 
@@ -159,8 +168,10 @@ jannesPage_canvas = Canvas(jannesPage,bg = frame_background,height = 768,width =
 jannesPage_canvas.place(x = 0, y = 0)
 jannesPage_canvas.create_rectangle(15.0,16.0,890.0,752.0,fill=secondary_background,outline="")
 
-jannesPage_textfield = Text(jannesPage, wrap=WORD, font=("Helvetica", 14))
+jannesPage_textfield = Text(jannesPage, wrap=WORD, font=("Helvetica", 14,'italic'),fg='lightgrey')
 jannesPage_textfield.place(x=26, y=40, height=470, width=850)
+jannesPage_textfield.insert('1.0',preset_text)
+jannesPage_textfield.bind("<Button-1>", lambda event: clear_text_on_focus(event, jannesPage_textfield))
 
 jannesPage_generateButton= Button(jannesPage, text='Generate',bg=higlight_blue,fg='white',font=label_font,command=get_text_and_source)
 jannesPage_generateButton.place(x=26,y=515,width=850,height=70)
@@ -174,7 +185,7 @@ jannesPage_copy.place(x=800,y=635,width=50,height=50)
 jannesPage_menuButton = Button(jannesPage,text='RegEx Generator',background=higlight_blue,fg='white',command=lambda: show_frame(mainPage))
 jannesPage_menuButton.place(x=1055,y=660,width=150,height=30)
 
-jannesPage_model= Label(jannesPage,text='Jannes',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
+jannesPage_model= Label(jannesPage,text='Evolving-Model',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
 jannesPage_model.place(x=944,y=82,width=375,height=75)
 
 jannesPage_loremlabel = Label(jannesPage,wraplength=300,  justify="left", font=("Helvetica", 20 ), anchor=('n'),fg='white',bg=secondary_background, 
@@ -191,8 +202,10 @@ mattiPage_canvas = Canvas(mattiPage,bg = frame_background,height = 768,width = 1
 mattiPage_canvas.place(x = 0, y = 0)
 mattiPage_canvas.create_rectangle(15.0,16.0,890.0,752.0,fill=secondary_background,outline="")
 
-mattiPage_textfield = Text(mattiPage, wrap=WORD, font=("Helvetica", 14))
+mattiPage_textfield = Text(mattiPage, wrap=WORD, font=("Helvetica", 14,'italic'),fg='lightgrey')
 mattiPage_textfield.place(x=26, y=40, height=470, width=850)
+mattiPage_textfield.insert('1.0',preset_text)
+mattiPage_textfield.bind("<Button-1>", lambda event: clear_text_on_focus(event, mattiPage_textfield))
 
 mattiPage_generateButton= Button(mattiPage, text='Generate',bg=higlight_blue,fg='white',font=label_font,command=get_text_and_source)
 mattiPage_generateButton.place(x=26,y=515,width=850,height=70)
@@ -207,7 +220,7 @@ mattiPage_copy.place(x=800,y=635,width=50,height=50)
 mattiPage_menuButton = Button(mattiPage,text='RegEx Generator',background=higlight_blue,fg='white',command=lambda: show_frame(mainPage))
 mattiPage_menuButton.place(x=1055,y=660,width=150,height=30)
 
-mattiPage_model= Label(mattiPage,text='Matti',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
+mattiPage_model= Label(mattiPage,text='Parallel-Model',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
 mattiPage_model.place(x=944,y=82,width=375,height=75)
 
 mattiPage_loremlabel = Label(mattiPage,wraplength=300,  justify="left", font=("Helvetica", 20 ), anchor=('n'),fg='white',bg=secondary_background, 
@@ -234,13 +247,11 @@ checkPage_checkButton.place(x=219,width=455,height=80,y=645)
 checkPage_menuButton = Button(checkPage,text='RegEx Generator',background=higlight_blue,fg='white',command=lambda: show_frame(mainPage))
 checkPage_menuButton.place(x=1055,y=660,width=150,height=30)
 
-checkPage_model= Label(checkPage,text='Funktion',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
+checkPage_model= Label(checkPage,text='Function',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
 checkPage_model.place(x=944,y=82,width=375,height=75)
 
 checkPage_loremlabel = Label(checkPage,wraplength=300,  justify="left", font=("Helvetica", 20 ), anchor=('n'),fg='white',bg=secondary_background, 
-    text=(
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-    )
+    text=("Lorem Ipsum is simply dummy text of the printing and typesetting industry. ")
 )
 checkPage_loremlabel.place(x=944,y=165,width=375,height=465)
 
