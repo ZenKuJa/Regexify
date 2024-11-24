@@ -13,10 +13,10 @@ class LLMRegExGenerator:
 
 
     generation_config = {
-      "temperature": 0.3,
+      "temperature": 0.25,
       "top_p": 0.9,
-      "top_k": 10,
-      "max_output_tokens": 256,
+      "top_k": 5,
+      "max_output_tokens": 128,
       "response_mime_type": "text/plain",
     }
 
