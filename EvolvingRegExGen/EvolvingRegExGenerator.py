@@ -1,3 +1,4 @@
+import logging
 from EvolvingRegExGen.EvolvingCharSet import EvolvingCharSet
 from EvolvingRegExGen.EvolvingCharSetController import EvolvingCharSetController
 from EvolvingRegExGen.EvolvingRegEx import EvolvingRegularExpression
@@ -9,9 +10,8 @@ class EvolvingRegExGenerator:
          self.char_controller = EvolvingCharSetController()
          pass
 
-
-
     def generate(self, input_str: str) -> EvolvingRegularExpression:
+        """Takes an input string and generates the corresponding RegularExpression object"""
         reg_ex: EvolvingRegularExpression = EvolvingRegularExpression()
         group_length: int = 1
         occurring_chars: str = ""
@@ -39,6 +39,8 @@ class EvolvingRegExGenerator:
         return reg_ex
 
     def generate_list(self, str_list: list[str]) -> list[EvolvingRegularExpression]:
+        """Takes a list of type string and generates the corresponding RegularExpression object for each string.
+        Returns a list containing the RegularExpression objects in the same order as the input list."""
         output_list: list[EvolvingRegularExpression] = []
         for _str in str_list:
             output_list.append(self.generate(_str))
@@ -46,6 +48,8 @@ class EvolvingRegExGenerator:
 
 
     def merge_2_reg_ex(self, reg_ex_1: EvolvingRegularExpression, reg_ex_2: EvolvingRegularExpression) -> EvolvingRegularExpression | None:
+        """Takes two RegularExpression objects, combines them and returns a RegularExpression object that describes the given RegularExpressions.
+        If they don't follow the same CharSet order, none is returned"""
         new_reg_ex: EvolvingRegularExpression = EvolvingRegularExpression()
 
         if reg_ex_1.get_reg_ex_order() ==  reg_ex_2.get_reg_ex_order():
@@ -60,10 +64,11 @@ class EvolvingRegExGenerator:
 
             return new_reg_ex
         else:
-            print("regular expressions follow a different structure")
             return None
 
     def merge_reg_ex_list(self, reg_ex_list: list[EvolvingRegularExpression]) -> EvolvingRegularExpression | None:
+        """Takes a list of type RegularExpression and returns a RegularExpression object that describes all contained RegularExpressions.
+        If they don't follow the same CharSet order, none is returned."""
         new_reg_ex: EvolvingRegularExpression = reg_ex_list[0]
         for reg_ex in reg_ex_list[1:]:
             output = self.merge_2_reg_ex(new_reg_ex, reg_ex)
