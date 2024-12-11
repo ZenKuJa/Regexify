@@ -119,11 +119,11 @@ mainPage_canvas.create_text(175,300,anchor="nw",text="RegEx Generator",fill="whi
 mainPage_choose = Label(mainPage,text='Choose your model',anchor='center',background=higlight_blue,font=('fixedsys',20),fg='white')
 mainPage_choose.place(x=115,y=380,width=675,height=100)
 
-mainPage_davidButton= Button(mainPage,text='AI-Model',font=label_font,bg=higlight_blue,fg='white',command=lambda: show_frame(davidPage))
+mainPage_davidButton= Button(mainPage,text='LLM-Model',font=label_font,bg=higlight_blue,fg='white',command=lambda: show_frame(davidPage))
 mainPage_davidButton.place(x=947, y=175, width=360, height=80)
 mainPage_jannesButton= Button(mainPage,text='Evolving-Model',width=50,font=label_font,height=5,bg=higlight_blue,fg='white',command=lambda: show_frame(jannesPage))
 mainPage_jannesButton.place(x=947,y=294, width=360, height=80)
-mainPage_mattiButton= Button(mainPage,text='Parallel-Model',width=50,height=5,font=label_font,bg=higlight_blue,fg='white',command=lambda: show_frame(mattiPage))
+mainPage_mattiButton= Button(mainPage,text='Iterative-Model',width=50,height=5,font=label_font,bg=higlight_blue,fg='white',command=lambda: show_frame(mattiPage))
 mainPage_mattiButton.place(x=947,y=413, width=360, height=80)
 
 mainPage_checkButton= Button(mainPage, text='RegEx Check',width=30,height=2,bg='#0056A7',fg='white',font='fixedsys',command=lambda: show_frame(checkPage))
@@ -189,8 +189,7 @@ jannesPage_model= Label(jannesPage,text='Evolving-Model',anchor='center',backgro
 jannesPage_model.place(x=944,y=82,width=375,height=75)
 
 jannesPage_loremlabel = Label(jannesPage,wraplength=300,  justify="left", font=("Helvetica", 20 ), anchor=('n'),fg='white',bg=secondary_background, 
-    text=(
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+    text=("This approach utilies an object oriented approach.It generates a regular expression for a single string and expands it to fit multiple strings."
     )
 
 )
@@ -225,7 +224,7 @@ mattiPage_model.place(x=944,y=82,width=375,height=75)
 
 mattiPage_loremlabel = Label(mattiPage,wraplength=300,  justify="left", font=("Helvetica", 20 ), anchor=('n'),fg='white',bg=secondary_background, 
     text=(
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+        "The iterative algorithm starts by splitting the strings into characters. These characters are then iteratively encoded and their amount per group is quantified. After the patterns of the encoded strings have been successfully compared, they are put together to form the regular expression. "
     )
 )
 mattiPage_loremlabel.place(x=944,y=165,width=375,height=465)
