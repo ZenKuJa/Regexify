@@ -85,5 +85,3 @@ class EvolvingRegularExpression:
             reg_ex_order.append(part.get_char_set())
 
         return reg_ex_order
-
-
