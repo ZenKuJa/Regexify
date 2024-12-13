@@ -250,7 +250,7 @@ checkPage_model= Label(checkPage,text='Function',anchor='center',background=higl
 checkPage_model.place(x=944,y=82,width=375,height=75)
 
 checkPage_loremlabel = Label(checkPage,wraplength=300,  justify="left", font=("Helvetica", 20 ), anchor=('n'),fg='white',bg=secondary_background, 
-    text=("Lorem Ipsum is simply dummy text of the printing and typesetting industry. ")
+    text=("This function checks if the given RegEx and the given Inputs matches. ")
 )
 checkPage_loremlabel.place(x=944,y=165,width=375,height=465)
 
