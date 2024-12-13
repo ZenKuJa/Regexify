@@ -1,4 +1,3 @@
-from CheckRegEx import CheckRegEx
 from CheckRegExController import CheckRegExController
 from EvolvingRegExGen.EvolvingRegExGeneratorController import EvolvingRegExGeneratorController
 
@@ -18,7 +17,6 @@ def main():
         "1.1.1.1"]
 
     reg_ex:str = evolvingRegExGenController.generateRegExFromStringList(str_list)
-
     print(reg_ex)
     print(regExChecker.check_for_match(reg_ex=reg_ex, string_list=str_list))
 

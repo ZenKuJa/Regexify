@@ -13,16 +13,15 @@ class LLMRegExGenerator:
 
 
     generation_config = {
-      "temperature": 0.3,
+      "temperature": 0.25,
       "top_p": 0.9,
       "top_k": 10,
-      "max_output_tokens": 256,
       "response_mime_type": "text/plain",
     }
 
 
     model = genai.GenerativeModel(
-      model_name="gemini-1.5-pro",
+      model_name="gemini-1.0-pro",
       generation_config=generation_config,
       system_instruction= open(r'LLMRegExGen\LLMRegExGeneratorInstructions.txt','r').read())
 
