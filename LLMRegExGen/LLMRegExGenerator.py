@@ -21,7 +21,7 @@ class LLMRegExGenerator:
 
 
     model = genai.GenerativeModel(
-      model_name="gemini-1.5-pro",
+      model_name="gemini-1.0-pro",
       generation_config=generation_config,
       system_instruction= open(r'LLMRegExGen\LLMRegExGeneratorInstructions.txt','r').read())
 
