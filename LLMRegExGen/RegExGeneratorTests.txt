@@ -29,7 +29,7 @@ gYnwit-cadwoj-7robbu , puwcub-4hucbe-tefPic, nekbop-5bohpu-vEcsut, zibQax-4zykta
 David: Ja ; Jannes: Nein ; Matti: Nein
 
 -- Telefonnummern --
-004916212345678 , 004916209876543, 004900555019923
+004916212345678, 004916209876543, 004900555019923
 David: Ja ; Jannes: Nein ; Matti: Nein
 
 01627654321, +491521234567, 01519876543, +491609876543
